@@ -6,6 +6,8 @@
 #d - diameter in inches
 #v = (pi * w^2 * a * (w * a + 2540 * d)) / 1000000
 import math
+from datetime import datetime
+
 tire_volume = lambda w, a, d: math.pi * w**2 * a * (w * a + 2540 * d) / 10000000000
 
 def ask_for_input():
@@ -24,7 +26,26 @@ def main():
             break
         else:
             print("Invalid input. Please enter positive numeric values for width, aspect ratio, and diameter.")
+  
+  volume = round(tire_volume(int(width), int(aspect_ratio), int(diameter)),2)
+  print(f'The approximate volume is: {volume} liters')
 
-  print(f'The approximate volume is: {round(tire_volume(int(width), int(aspect_ratio), int(diameter)),2)} liters')
+  current_date = f"{datetime.now():%Y-%m-%d}"
+  
+  while True:
+    client_is_buying = input('Are you interested in buying a tire with the specified dimensions? (y/n)')
+    match client_is_buying.lower():
+      case 'y':
+        print('Great! We have a variety of tires in stock.')
+        phone_number = input('Please enter your phone number so we can contact you to discuss the options:')
+        open('volumes.txt', 'at').write(f'Client number: {phone_number} - ')
+        break
+      case 'n':
+        print('No problem! If you change your mind, feel free to contact us.')
+        break
+      case _:
+        print('Invalid input. Please enter y or n.')
+
+  open('volumes.txt', 'at').write(f'{current_date}, {width}, {aspect_ratio}, {diameter}, {volume}\n')
 
 main()
