@@ -1,0 +1,44 @@
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+.pytest_cache
+.venv
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Windows system files
+Thumbs.db
+desktop.ini
+
+# Ignore IDE/editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore log files
+*.log
+
+# Ignore compiled files
+*.o
+*.out
+*.class
+
+# Ignore node_modules
+node_modules/
+
+# Ignore coverage reports
+coverage/
+*.cover
+*.coverage
+*.cov
+*.gcov
+
+# Ignore build directories
+build/
+dist/
